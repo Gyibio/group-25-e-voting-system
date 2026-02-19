@@ -1,0 +1,43 @@
+import React from "react";
+import Header from "../general/Header";
+import Image from "next/image";
+
+const Hero = () => {
+  return (
+    <div className="h-screen flex flex-col">
+      <Header />
+      <div className="h-full relative w-full overflow-hidden">
+        <div className="absolute inset-0 bg-linear-to-r from-primary/80 to-transparent">
+          <div className="h-full w-full flex flex-col pl-10 justify-center">
+            <h1 className=" text-white text-6xl font-bold">
+              Your Vote,
+              <span className="text-secondary"> Your Voice</span>
+            </h1>
+            <p className="text-white text-xl max-w-2xl">
+              The official SRC E-Voting platform for the University of Ghana.
+              Secure, transparent, and accessible to every student.
+            </p>
+            <div className="space-x-2 mt-2">
+              <button className="btn-secondary border border-secondary">
+                Cast Your Vote
+              </button>
+              <button className="btn-primary bg-transparent hover:bg-primary hover:border-primary transition-colors duration-300 border border-white">
+                View Results
+              </button>
+            </div>
+          </div>
+        </div>
+        <Image
+          src="/hero.png"
+          alt="Image of University of Ghana"
+          width={0}
+          height={0}
+          unoptimized
+          className="object-cover h-full w-full"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Hero;
