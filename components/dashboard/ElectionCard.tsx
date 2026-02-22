@@ -1,4 +1,5 @@
 import { ChartColumn, ChevronRight, Clock, Dot } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 interface ECard {
@@ -34,9 +35,11 @@ const ElectionCard = (data: ECard) => {
           </p>
         </div>
         {status === "active" ? (
-          <button className="btn-primary flex items-center text-sm">
-            Vote <ChevronRight size={18} />
-          </button>
+          <Link href={"/vote"}>
+            <button className="btn-primary flex items-center text-sm">
+              Vote <ChevronRight size={18} />
+            </button>
+          </Link>
         ) : status === "completed" ? (
           <button className="flex items-center gap-1 font-medium border border-dark/10 px-4 py-2 rounded-lg text-sm bg-primary-light/20 hover:bg-secondary transition-colors ">
             Results <ChartColumn size={18} />
