@@ -1,8 +1,14 @@
+"use client";
+
 import React from "react";
 import Header from "../general/Header";
 import Image from "next/image";
+import { useLC } from "../general/LoginContext";
+import Link from "next/link";
 
 const Hero = () => {
+  const { setIsOpen, login } = useLC();
+
   return (
     <div className="h-screen flex flex-col">
       <Header />
@@ -18,9 +24,14 @@ const Hero = () => {
               Secure, transparent, and accessible to every student.
             </p>
             <div className="space-x-2 mt-2">
-              <button className="btn-secondary border border-secondary">
-                Cast Your Vote
-              </button>
+              <Link href={login ? "/dashboard" : ""}>
+                <button
+                  onClick={() => !login && setIsOpen(true)}
+                  className="btn-secondary border border-secondary"
+                >
+                  Cast Your Vote
+                </button>
+              </Link>
               <button className="btn-primary bg-transparent hover:bg-primary hover:border-primary transition-colors duration-300 border border-white">
                 View Results
               </button>

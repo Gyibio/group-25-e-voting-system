@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Roboto_Slab } from "next/font/google";
 import "./globals.css";
+import { LoginProvider } from "@/components/general/LoginContext";
+import Login from "@/components/general/Login";
 
 const robotoSlab = Roboto_Slab({
   variable: "--font-robotoSlab",
@@ -19,7 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${robotoSlab.variable} antialiased`}>{children}</body>
+      <body className={`${robotoSlab.variable} antialiased`}>
+        <LoginProvider>
+          {children} <Login />
+        </LoginProvider>
+      </body>
     </html>
   );
 }

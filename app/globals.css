@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+button {
+  cursor: pointer;
+}
+
 @theme {
   --color-primary: #0066cc;
   --color-primary-light: #e3f2fd;
