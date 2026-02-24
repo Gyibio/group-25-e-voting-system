@@ -1,8 +1,18 @@
 "use client";
-import CandidateCard from "@/components/vote/CandidateCard";
+import Completed from "@/components/vote/Completed";
+import Confirmation from "@/components/vote/Confirmation";
+import Nav from "@/components/vote/Nav";
 import VoteHeader from "@/components/vote/VoteHeader";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import VotingSection from "@/components/vote/VotingSection";
+import { Check, ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useState } from "react";
+
+export type candidateT = {
+  name: string;
+  position: string;
+  faculty: string;
+  motto: string;
+};
 
 const Page = () => {
   // sample data for testing – each entry has name, position, faculty and motto
@@ -84,13 +94,7 @@ const Page = () => {
     },
   ];
 
-  const test = new Set<string>();
-
-  candidates.map((c) => test.add(c.position));
-  console.log(test.entries);
-
-  const positions: string[] = [];
-  test.forEach((v) => positions.push(v));
+  const positions = Array.from(new Set(candidates.map((c) => c.position)));
   const [currentStep, setCurrentStep] = useState<{
     position: string;
     index: number;
@@ -100,46 +104,43 @@ const Page = () => {
     (c) => c.position === currentStep.position,
   );
 
-  return (
-    <div>
-      <VoteHeader totalPositions={test.size} currentStep={currentStep} />
-      {/* use candidates array here for rendering or testing */}
+  const [selectedCandidates, setSelectedCandidates] = useState<candidateT[]>(
+    [],
+  );
 
-      <div className="max-w-4xl py-10 mx-auto">
-        <div className="pb-10 space-y-4">
-          {curCandidates.map((c) => (
-            <CandidateCard selected={true} candidate={c} key={c.name} />
-          ))}
+  const [confirm, setConfirm] = useState(false);
+  const [complete, setComplete] = useState(false);
+
+  useEffect(() => console.log(selectedCandidates), [selectedCandidates]);
+
+  return (
+    <div className="h-screen flex flex-col">
+      <VoteHeader totalPositions={positions.length} currentStep={currentStep} />
+      {/* use candidates array here for rendering or testing */}
+      {complete ? (
+        <Completed />
+      ) : (
+        <div className="max-w-4xl py-10 mx-auto">
+          {confirm ? (
+            <Confirmation selectedCandidates={selectedCandidates} />
+          ) : (
+            <VotingSection
+              currentStep={currentStep}
+              curCandidates={curCandidates}
+              selectedCandidates={selectedCandidates}
+              setSelectedCandidates={setSelectedCandidates}
+            />
+          )}
+          <Nav
+            setComplete={setComplete}
+            confirm={confirm}
+            setConfirm={setConfirm}
+            positions={positions}
+            currentStep={currentStep}
+            setCurrentStep={setCurrentStep}
+          />
         </div>
-        <div className="flex justify-between">
-          <button
-            onClick={() => {
-              if (currentStep.index > 1) {
-                setCurrentStep({
-                  position: positions[currentStep.index - 2],
-                  index: currentStep.index - 1,
-                });
-              }
-            }}
-            className="btn-primary flex items-center"
-          >
-            <ChevronLeft /> Previous
-          </button>
-          <button
-            onClick={() => {
-              if (currentStep.index < positions.length) {
-                setCurrentStep({
-                  position: positions[currentStep.index],
-                  index: currentStep.index + 1,
-                });
-              }
-            }}
-            className="btn-primary flex items-center"
-          >
-            Next <ChevronRight />
-          </button>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

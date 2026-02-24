@@ -17,16 +17,18 @@ const VoteHeader = ({
             Back
           </button>
         </div>
-        <div>{currentStep.position}</div>
+        <h1 className="font-bold">SRC Elections 2025/2026</h1>
         <div>
           {currentStep.index}/{totalPositions}
         </div>
       </div>
-      <motion.div
-        initial={{ width: 0 }}
-        animate={{ width: `${(currentStep.index / totalPositions) * 100}%` }}
-        className=" h-1 bg-primary"
-      />
+      <div className="w-full bg-dark/10">
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: `${(currentStep.index / totalPositions) * 100}%` }}
+          className=" h-[2px] bg-primary"
+        />
+      </div>
     </div>
   );
 };
