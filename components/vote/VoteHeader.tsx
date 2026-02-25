@@ -26,7 +26,7 @@ const VoteHeader = ({
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${(currentStep.index / totalPositions) * 100}%` }}
-          className=" h-[2px] bg-primary"
+          className=" h-0.5 bg-primary"
         />
       </div>
     </div>

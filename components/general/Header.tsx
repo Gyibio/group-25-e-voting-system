@@ -26,7 +26,7 @@ const Header = () => {
             <div className="bg-primary-light mr-2 p-2 rounded-full">
               <User />
             </div>
-            <div className="flex flex-col mr-4 text-xs justify-center hidden md:flex">
+            <div className="flex-col mr-4 text-xs justify-center hidden md:flex">
               <p>{user?.name}</p>
               <p className="text-black/60">{user?.id}</p>
             </div>

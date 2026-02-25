@@ -1,4 +1,4 @@
-import { ChartColumn, ChevronRight, Clock, Dot } from "lucide-react";
+import { ChartColumn, ChevronRight, Clock } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
