@@ -4,7 +4,7 @@ import React from "react";
 
 const Completed = () => {
   return (
-    <div className="flex flex-col gap-6 h-full w-full bg-amber-200 justify-center items-center">
+    <div className="flex flex-col gap-6 h-full w-full justify-center items-center">
       <div className="text-success bg-success-light rounded-full p-3">
         <Check size={46} />
       </div>
