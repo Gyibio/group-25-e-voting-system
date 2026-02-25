@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div className="w-full min-h-16 border-b border-dark/40 py-2 px-4 items-center justify-between flex flex-wrap gap-2">
       <div className="text-3xl font-bold text-primary">
-        <Link href={"/"}>E-UG</Link>
+        <Link href={"/"}>VoteUG</Link>
       </div>
       {login ? (
         <div className="flex items-center divide-dark/50 divide-x flex-wrap gap-y-2">
