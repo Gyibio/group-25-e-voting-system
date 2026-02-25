@@ -1,26 +1,65 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+button {
+  cursor: pointer;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-primary: #0066cc;
+  --color-primary-light: #e3f2fd;
+  --color-primary-dark: #0052a3;
+
+  --color-secondary: #e6b52a;
+  --color-secondary-light: #fdf6dc;
+  --color-secondary-dark: #c99a1f;
+
+  --color-success: #10b981;
+  --color-success-light: #d1fae5;
+  --color-success-dark: #059669;
+
+  --color-error: #dc2626;
+  --color-error-light: #fee2e2;
+  --color-error-dark: #b91c1c;
+
+  --color-warning: #f59e0b;
+  --color-warning-light: #fef3c7;
+  --color-warning-dark: #d97706;
+
+  --color-dark: #111827;
+  --color-text: #1f2937;
+  --color-text-light: #6b7280;
+  --color-border: #e5e7eb;
+  --color-bg: #f9fafb;
+  --color-white: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    /* use the Next/font variable set on <body> (from layout.tsx) */
+    font-family: var(
+      --font-robotoSlab,
+      ui-serif,
+      Georgia,
+      "Times New Roman",
+      serif
+    );
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  /* Improve font rendering */
+  .antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white px-2 sm:px-4 py-2 sm:text-base text-xs rounded-lg font-medium hover:bg-primary-dark transition-colors;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white px-2 sm:px-4 py-2 sm:text-base text-xs rounded-lg font-medium hover:bg-secondary-dark transition-colors;
+  }
 }
