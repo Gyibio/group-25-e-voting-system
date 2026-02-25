@@ -56,10 +56,10 @@ button {
 
 @layer components {
   .btn-primary {
-    @apply bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-dark transition-colors;
+    @apply bg-primary text-white px-2 sm:px-4 py-2 sm:text-base text-xs rounded-lg font-medium hover:bg-primary-dark transition-colors;
   }
 
   .btn-secondary {
-    @apply bg-secondary text-white px-4 py-2 rounded-lg font-medium hover:bg-secondary-dark transition-colors;
+    @apply bg-secondary text-white px-2 sm:px-4 py-2 sm:text-base text-xs rounded-lg font-medium hover:bg-secondary-dark transition-colors;
   }
 }

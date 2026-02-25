@@ -13,9 +13,9 @@ const page = () => {
   return (
     <div>
       <ResultHeader />
-      <div className="max-w-4xl py-10 mx-auto">
+      <div className="max-w-4xl py-6 md:py-10 px-4 md:px-0 mx-auto">
         <div>
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-2xl md:text-3xl font-bold">
             SRC Elections 2025/2026 Results
           </h1>
           <p className="text-sm text-dark/40">

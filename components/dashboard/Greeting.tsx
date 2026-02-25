@@ -6,7 +6,7 @@ const Greeting = () => {
 
   return (
     <div>
-      <h1 className="text-4xl font-bold">Welcome, {user?.name}</h1>
+      <h1 className="text-2xl md:text-4xl font-bold">Welcome, {user?.name}</h1>
       <p className="text-dark/60">
         Here are the current and upcoming SRC elections.
       </p>

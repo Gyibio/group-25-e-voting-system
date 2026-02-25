@@ -14,16 +14,16 @@ const Hero = () => {
       <Header />
       <div className="h-full relative w-full overflow-hidden">
         <div className="absolute inset-0 bg-linear-to-r from-primary/80 to-transparent">
-          <div className="h-full w-full flex flex-col pl-10 justify-center">
-            <h1 className=" text-white text-6xl font-bold">
+          <div className="h-full w-full flex flex-col px-4 md:pl-10 justify-center">
+            <h1 className="text-white text-3xl md:text-6xl font-bold">
               Your Vote,
               <span className="text-secondary"> Your Voice</span>
             </h1>
-            <p className="text-white text-xl max-w-2xl">
+            <p className="text-white text-sm md:text-xl max-w-2xl">
               The official SRC E-Voting platform for the University of Ghana.
               Secure, transparent, and accessible to every student.
             </p>
-            <div className="space-x-2 mt-2">
+            <div className="flex flex-wrap gap-2 mt-2">
               <Link href={login ? "/dashboard" : ""}>
                 <button
                   onClick={() => !login && setIsOpen(true)}
@@ -32,7 +32,7 @@ const Hero = () => {
                   Cast Your Vote
                 </button>
               </Link>
-              <button className="btn-primary bg-transparent hover:bg-primary hover:border-primary transition-colors duration-300 border border-white">
+              <button className="btn-primary backdrop-blur-xs bg-transparent hover:bg-primary hover:border-primary transition-colors duration-300 border border-white">
                 View Results
               </button>
             </div>

@@ -9,7 +9,7 @@ const VoteHeader = ({
   currentStep: { position: string; index: number };
 }) => {
   return (
-    <div className="w-full">
+    <div className="w-full h-fit">
       <div className="w-full flex items-center justify-between p-4">
         <div>
           <button className="flex items-center">

@@ -25,7 +25,7 @@ const Login = () => {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-white border rounded-lg w-150 relative border-primary p-8"
+            className="bg-white border rounded-lg w-full max-w-lg mx-4 relative border-primary p-6 md:p-8"
           >
             <button
               onClick={() => setIsOpen(false)}

@@ -49,7 +49,7 @@ const ElectionCard = (data: ECard) => {
         )}{" "}
       </div>
       <div className="mt-2">
-        <h1 className="text-2xl font-bold ">{title}</h1>
+        <h1 className="text-xl md:text-2xl font-bold">{title}</h1>
         <p className="text-sm">{description}</p>
       </div>
       <div className="flex text-xs gap-3 text-dark/70 pt-2 items-center">

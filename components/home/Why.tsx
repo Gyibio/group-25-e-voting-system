@@ -57,10 +57,10 @@ const Why = () => {
   };
 
   return (
-    <div className="px-8 ">
+    <div className="px-4 md:px-8">
       <div className="text-center my-10">
-        <h1 className="text-4xl font-bold">Why E-Voting?</h1>
-        <p className="text-xl text-dark/60">
+        <h1 className="text-2xl md:text-4xl font-bold">Why E-Voting?</h1>
+        <p className="text-sm md:text-xl text-dark/60">
           A modern, secure approach to student democracy at the University of
           Ghana.
         </p>
@@ -70,13 +70,13 @@ const Why = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.4 }}
-        className=" grid gap-6  grid-cols-2"
+        className="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2"
       >
         {whys.map((w, i) => (
           <motion.div
             variants={child}
             key={i}
-            className="p-6 border border-dark/20 shadow rounded-lg"
+            className="p-6 border sm:block sm:text-left flex flex-col justify-center items-center text-center border-dark/20 shadow rounded-lg"
           >
             <div className="p-3 w-fit mb-4 bg-primary/15 text-primary rounded-lg">
               {w.icon}

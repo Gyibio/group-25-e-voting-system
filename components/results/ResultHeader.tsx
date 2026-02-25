@@ -13,10 +13,10 @@ const ResultHeader = () => {
           </button>
         </Link>
       </div>
-      <div className="flex-1 flex justify-center">
+      <div className="flex-1 flex justify-end  sm:justify-center">
         <h1 className="font-bold">Election Results</h1>
       </div>
-      <div className="flex-1" />
+      <div className="flex-1 hidden sm:block" />
     </div>
   );
 };

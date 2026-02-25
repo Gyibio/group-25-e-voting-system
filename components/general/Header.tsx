@@ -8,12 +8,12 @@ const Header = () => {
   const { setIsOpen, user, login, setUser } = useLC();
 
   return (
-    <div className="w-full h-16 border-b border-dark/40 py-2 px-4 items-center justify-between flex">
+    <div className="w-full min-h-16 border-b border-dark/40 py-2 px-4 items-center justify-between flex flex-wrap gap-2">
       <div className="text-3xl font-bold text-primary">
         <Link href={"/"}>E-UG</Link>
       </div>
       {login ? (
-        <div className="flex items-center divide-dark/50 divide-x">
+        <div className="flex items-center divide-dark/50 divide-x flex-wrap gap-y-2">
           <div className="flex pr-4 items-center">
             <Link href={"/results"}>
               <button className="flex gap-2 bg-bg hover:bg-secondary transition-colors p-2 text-dark/80 rounded-lg items-center">
@@ -26,7 +26,7 @@ const Header = () => {
             <div className="bg-primary-light mr-2 p-2 rounded-full">
               <User />
             </div>
-            <div className="flex flex-col mr-4 text-xs justify-center">
+            <div className="flex flex-col mr-4 text-xs justify-center hidden md:flex">
               <p>{user?.name}</p>
               <p className="text-black/60">{user?.id}</p>
             </div>
@@ -41,7 +41,7 @@ const Header = () => {
           </div>
         </div>
       ) : (
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
           <motion.button
             initial={{ borderColor: "#ffffff00", color: "#000000" }}
             whileHover={{ borderColor: "#e6b52a", color: "#e6b52a" }}
@@ -50,7 +50,7 @@ const Header = () => {
               ease: "linear",
             }}
             onClick={() => setIsOpen(true)}
-            className="px-4 py-2 rounded-lg font-medium bg-transparent border"
+            className="px-2 sm:px-4 py-2 sm:text-base text-xs rounded-lg font-medium bg-transparent border"
           >
             Sign In
           </motion.button>

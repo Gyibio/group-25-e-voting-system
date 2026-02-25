@@ -4,19 +4,19 @@ import React from "react";
 
 const Completed = () => {
   return (
-    <div className="flex flex-col gap-6 h-full w-full justify-center items-center">
+    <div className="flex flex-col gap-6 h-full w-full bg-amber-200 justify-center items-center">
       <div className="text-success bg-success-light rounded-full p-3">
         <Check size={46} />
       </div>
       <div className="text-center">
-        <h1 className="text-3xl font-bold">Vote Submitted!</h1>
+        <h1 className="text-2xl md:text-3xl font-bold">Vote Submitted!</h1>
         <p className="text-x; text-dark/70">
           Your encrypted ballot has been securely recorded.
         </p>
       </div>
-      <div className="flex gap-4">
+      <div className="flex flex-wrap gap-4 justify-center">
         <Link href={"/dashboard"}>
-          <button className="px-4 py-2 rounded-lg font-medium bg-primary-light border border-dark/40 hover:bg-secondary transition-colors ">
+          <button className="px-2 sm:px-4 py-2 sm:text-base text-xs rounded-lg font-medium bg-primary-light border border-dark/40 hover:bg-secondary transition-colors ">
             Back to Dashboard
           </button>
         </Link>

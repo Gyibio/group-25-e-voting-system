@@ -36,13 +36,13 @@ const Page = () => {
   useEffect(() => console.log(selectedCandidates), [selectedCandidates]);
 
   return (
-    <div className="h-screen flex flex-col items-center">
+    <div className="flex h-screen flex-col items-center">
       <VoteHeader totalPositions={positions.length} currentStep={currentStep} />
       {/* use candidates array here for rendering or testing */}
       {complete ? (
         <Completed />
       ) : (
-        <div className="max-w-4xl w-full py-10 ">
+        <div className="max-w-4xl h-full justify-between sm:block flex flex-col w-full py-6 md:py-10 px-4 md:px-0">
           {confirm ? (
             <Confirmation selectedCandidates={selectedCandidates} />
           ) : (

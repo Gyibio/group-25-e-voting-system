@@ -17,8 +17,8 @@ const ResultCard = ({
 
   return (
     <div className="p-4 bg-white border shadow border-dark/20 rounded-lg">
-      <div className="flex justify-between mb-4 items-center">
-        <h1 className="text-xl font-bold">{position}</h1>
+      <div className="flex flex-wrap gap-2 justify-between mb-4 items-center">
+        <h1 className="text-lg md:text-xl font-bold">{position}</h1>
         <p className="text-xs text-dark/60">{votes.toLocaleString()} votes</p>
       </div>
       <div className="space-y-2">
@@ -34,7 +34,9 @@ const ResultCard = ({
                 )}
               </div>
               <div>
-                <p className="text-sm text-dark/70">{votes ? ((c.votes / votes) * 100).toFixed(2) : 0}%</p>
+                <p className="text-sm text-dark/70">
+                  {votes ? ((c.votes / votes) * 100).toFixed(2) : 0}%
+                </p>
               </div>
             </div>
             <div className="h-2 w-full bg-dark/20 rounded-full">
