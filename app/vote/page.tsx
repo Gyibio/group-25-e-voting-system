@@ -1,10 +1,10 @@
 "use client";
+import candidates from "@/candidates";
 import Completed from "@/components/vote/Completed";
 import Confirmation from "@/components/vote/Confirmation";
 import Nav from "@/components/vote/Nav";
 import VoteHeader from "@/components/vote/VoteHeader";
 import VotingSection from "@/components/vote/VotingSection";
-import { Check, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export type candidateT = {
@@ -12,88 +12,10 @@ export type candidateT = {
   position: string;
   faculty: string;
   motto: string;
+  votes: number;
 };
 
 const Page = () => {
-  // sample data for testing – each entry has name, position, faculty and motto
-  const candidates = [
-    // president candidates
-    {
-      name: "Alice Johnson",
-      position: "President",
-      faculty: "Science",
-      motto: "Knowledge is power",
-    },
-    {
-      name: "David Kwame",
-      position: "President",
-      faculty: "Business",
-      motto: "Leadership through service",
-    },
-    {
-      name: "Emilia Boateng",
-      position: "President",
-      faculty: "Law",
-      motto: "Justice for all",
-    },
-    {
-      name: "Francis Nkrumah",
-      position: "President",
-      faculty: "Social Sciences",
-      motto: "Unity and progress",
-    },
-    // vice president candidates
-    {
-      name: "Brian Mensah",
-      position: "Vice President",
-      faculty: "Engineering",
-      motto: "Building the future together",
-    },
-    {
-      name: "Grace Osei",
-      position: "Vice President",
-      faculty: "Medicine",
-      motto: "Health is wealth",
-    },
-    {
-      name: "Henry Adu",
-      position: "Vice President",
-      faculty: "Agriculture",
-      motto: "Growing our nation",
-    },
-    {
-      name: "Irene Tetteh",
-      position: "Vice President",
-      faculty: "Education",
-      motto: "Knowledge for change",
-    },
-    // secretary candidates
-    {
-      name: "Claire Owusu",
-      position: "Secretary",
-      faculty: "Arts",
-      motto: "Communication is key",
-    },
-    {
-      name: "James Appiah",
-      position: "Secretary",
-      faculty: "Computer Science",
-      motto: "Connect and record",
-    },
-    {
-      name: "Kofi Yeboah",
-      position: "Secretary",
-      faculty: "Mathematics",
-      motto: "Precision in every word",
-    },
-    {
-      name: "Linda Akoto",
-      position: "Secretary",
-      faculty: "Nursing",
-      motto: "Care with clarity",
-    },
-  ];
-
   const positions = Array.from(new Set(candidates.map((c) => c.position)));
   const [currentStep, setCurrentStep] = useState<{
     position: string;
@@ -114,13 +36,13 @@ const Page = () => {
   useEffect(() => console.log(selectedCandidates), [selectedCandidates]);
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col items-center">
       <VoteHeader totalPositions={positions.length} currentStep={currentStep} />
       {/* use candidates array here for rendering or testing */}
       {complete ? (
         <Completed />
       ) : (
-        <div className="max-w-4xl py-10 mx-auto">
+        <div className="max-w-4xl w-full py-10 ">
           {confirm ? (
             <Confirmation selectedCandidates={selectedCandidates} />
           ) : (

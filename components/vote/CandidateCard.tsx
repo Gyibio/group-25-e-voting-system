@@ -21,7 +21,7 @@ const CandidateCard = ({
   return (
     <div
       onClick={() => action()}
-      className={`flex group gap-4 w-full ${selected ? "border-primary hover:border-primary-dark bg-primary-light " : "border-dark/20 hover:border-dark/40 bg-white"} border-3 transition-colors rounded-lg p-4 items-center`}
+      className={`flex group gap-4 w-full ${selected ? "border-primary hover:border-primary-dark bg-primary-light " : "border-dark/20 hover:border-dark/40 bg-white"} border-3 transition-colors rounded-lg p-4 items-center shadow`}
     >
       <div
         className={`${selected ? "bg-primary text-white" : "bg-primary-light text-dark/40"} transition-colors p-2 rounded-full`}

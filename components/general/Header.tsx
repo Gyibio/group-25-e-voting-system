@@ -15,14 +15,12 @@ const Header = () => {
       {login ? (
         <div className="flex items-center divide-dark/50 divide-x">
           <div className="flex pr-4 items-center">
-            <motion.button
-              initial={{ backgroundColor: "#f9fafb" }}
-              whileHover={{ backgroundColor: "#e6b52a" }}
-              className="flex gap-2 p-2 text-dark/80 rounded-lg items-center"
-            >
-              <p className="text-sm font-medium">Results</p>
-              <ChartColumn />
-            </motion.button>
+            <Link href={"/results"}>
+              <button className="flex gap-2 bg-bg hover:bg-secondary transition-colors p-2 text-dark/80 rounded-lg items-center">
+                <p className="text-sm font-medium">Results</p>
+                <ChartColumn />
+              </button>
+            </Link>
           </div>
           <div className="flex pl-4 items-center">
             <div className="bg-primary-light mr-2 p-2 rounded-full">

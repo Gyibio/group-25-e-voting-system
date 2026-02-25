@@ -34,7 +34,7 @@ const VotingSection = ({
   };
 
   return (
-    <div>
+    <div className="min-w-full">
       <div className="mb-4">
         <h1 className="text-2xl font-bold">{currentStep.position}</h1>
         <p>Select one candidate for this position.</p>

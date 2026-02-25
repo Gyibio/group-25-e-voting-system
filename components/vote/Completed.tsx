@@ -20,7 +20,7 @@ const Completed = () => {
             Back to Dashboard
           </button>
         </Link>
-        <Link href={"/dashboard"}>
+        <Link href={"/results"}>
           <button className="btn-primary border border-primary">
             View Results
           </button>

@@ -16,7 +16,7 @@ const ElectionCard = (data: ECard) => {
     data;
 
   return (
-    <div className="flex flex-col border border-dark/30 rounded-lg w-full p-4">
+    <div className="flex flex-col border border-dark/20 shadow rounded-lg w-full p-4">
       <div className="flex items-center justify-between">
         <div className="relative flex items-center justify-center">
           {status === "active" && (
