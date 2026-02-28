@@ -3,6 +3,7 @@ import { Roboto_Slab } from "next/font/google";
 import "./globals.css";
 import { LoginProvider } from "@/components/general/LoginContext";
 import Login from "@/components/general/Login";
+import { SessionProvider } from "next-auth/react";
 
 const robotoSlab = Roboto_Slab({
   variable: "--font-robotoSlab",
@@ -22,9 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${robotoSlab.variable} antialiased`}>
-        <LoginProvider>
-          {children} <Login />
-        </LoginProvider>
+        <SessionProvider>
+          <LoginProvider>
+            {children}
+            <Login />
+          </LoginProvider>
+        </SessionProvider>
       </body>
     </html>
   );

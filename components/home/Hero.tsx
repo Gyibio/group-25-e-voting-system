@@ -24,14 +24,20 @@ const Hero = () => {
               Secure, transparent, and accessible to every student.
             </p>
             <div className="flex flex-wrap gap-2 mt-2">
-              <Link href={login ? "/dashboard" : ""}>
+              {login ? (
+                <Link href="/dashboard">
+                  <button className="btn-secondary border border-secondary">
+                    Cast Your Vote
+                  </button>
+                </Link>
+              ) : (
                 <button
-                  onClick={() => !login && setIsOpen(true)}
+                  onClick={() => setIsOpen(true)}
                   className="btn-secondary border border-secondary"
                 >
                   Cast Your Vote
                 </button>
-              </Link>
+              )}
               <button className="btn-primary backdrop-blur-xs bg-transparent hover:bg-primary hover:border-primary transition-colors duration-300 border border-white">
                 View Results
               </button>
