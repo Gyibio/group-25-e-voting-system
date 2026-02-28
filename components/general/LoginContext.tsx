@@ -21,7 +21,7 @@ export const LoginProvider = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   // derive login state from next-auth session
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const login = status === "authenticated";
 
   // lock body scroll when modal open
