@@ -7,18 +7,11 @@ import {
   useEffect,
   useState,
 } from "react";
-
-type userT = {
-  id: string;
-  name: string;
-};
+import { useSession } from "next-auth/react";
 
 interface LC {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  // current authenticated user (null when signed out)
-  user: userT | null;
-  setUser: (user: userT | null) => void;
   login: boolean;
 }
 
@@ -27,41 +20,17 @@ const LoginContext = createContext<undefined | LC>(undefined);
 export const LoginProvider = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // persist user state and keep it in sync with localStorage
-  // start as null to match server render; populate client-side
-  const [user, setUser] = useState<userT | null>(null);
+  // derive login state from next-auth session
+  const { data: session, status } = useSession();
+  const login = status === "authenticated";
 
-  // read storage once on client after hydration
+  // lock body scroll when modal open
   useEffect(() => {
-    try {
-      const stored = JSON.parse(localStorage.getItem("user") || "null");
-      if (stored) {
-        // defer to avoid synchronous state update warning
-        setTimeout(() => setUser(stored), 0);
-      }
-    } catch {
-      // ignore
-    }
-  }, []);
-
-  // whenever user changes, mirror it to localStorage
-  useEffect(() => {
-    if (user) {
-      localStorage.setItem("user", JSON.stringify(user));
-    } else {
-      localStorage.removeItem("user");
-    }
-  }, [user]);
-
-  useEffect(() => {
-    if (isOpen) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "auto";
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
 
-  const login = Boolean(user && user.id);
-
   return (
-    <LoginContext.Provider value={{ isOpen, setIsOpen, user, setUser, login }}>
+    <LoginContext.Provider value={{ isOpen, setIsOpen, login }}>
       {children}
     </LoginContext.Provider>
   );

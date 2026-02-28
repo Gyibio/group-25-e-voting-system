@@ -3,9 +3,10 @@ import { motion } from "motion/react";
 import { useLC } from "./LoginContext";
 import { ChartColumn, LogOut, User } from "lucide-react";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 const Header = () => {
-  const { setIsOpen, user, login, setUser } = useLC();
+  const { setIsOpen, login } = useLC();
 
   return (
     <div className="w-full min-h-16 border-b border-dark/40 py-2 px-4 items-center justify-between flex flex-wrap gap-2">
@@ -26,14 +27,10 @@ const Header = () => {
             <div className="bg-primary-light mr-2 p-2 rounded-full">
               <User />
             </div>
-            <div className="flex-col mr-4 text-xs justify-center hidden md:flex">
-              <p>{user?.name}</p>
-              <p className="text-black/60">{user?.id}</p>
-            </div>
+            {/* session info can be fetched from useSession if needed */}
             <button
               onClick={() => {
-                setUser(null);
-                localStorage.clear();
+                signOut();
               }}
             >
               <LogOut />

@@ -1,12 +1,14 @@
 "use client";
-import { useLC } from "@/components/general/LoginContext";
+import { useSession } from "next-auth/react";
 
 const Greeting = () => {
-  const { user } = useLC();
+  const { data: session } = useSession();
 
   return (
     <div>
-      <h1 className="text-2xl md:text-4xl font-bold">Welcome, {user?.name}</h1>
+      <h1 className="text-2xl md:text-4xl font-bold">
+        Welcome, {session?.user?.name}
+      </h1>
       <p className="text-dark/60">
         Here are the current and upcoming SRC elections.
       </p>
