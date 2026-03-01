@@ -1,5 +1,5 @@
 "use client";
-import { candidateT } from "@/app/vote/page";
+import { CandidateWithVotes } from "@/types/results";
 import { Trophy } from "lucide-react";
 import { motion } from "motion/react";
 
@@ -8,12 +8,10 @@ const ResultCard = ({
   candidates,
 }: {
   position: string;
-  candidates: candidateT[];
+  candidates: CandidateWithVotes[];
 }) => {
-  // derive total votes from props; no need for state or loops inside render
+  // candidates arrive pre-sorted (highest votes first) from the server
   const votes = candidates.reduce((sum, c) => sum + c.votes, 0);
-
-  candidates.sort((a, b) => b.votes - a.votes);
 
   return (
     <div className="p-4 bg-white border shadow border-dark/20 rounded-lg">

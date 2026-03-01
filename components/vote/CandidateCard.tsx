@@ -1,19 +1,14 @@
 "use client";
+import { ICandidate } from "@/models/Candidate";
 import { Check, User } from "lucide-react";
 import React from "react";
-
-interface candidateT {
-  name: string;
-  faculty: string;
-  motto: string;
-}
 
 const CandidateCard = ({
   candidate,
   selected,
   action,
 }: {
-  candidate: candidateT;
+  candidate: ICandidate;
   selected: boolean;
   action: () => void;
 }) => {

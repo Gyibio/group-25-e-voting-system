@@ -6,10 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:clear": "dotenv -e .env.local -- tsx scripts/clear-db.ts",
+    "db:seed": "dotenv -e .env.local -- tsx scripts/seed-db.ts",
+    "db:fix-indexes": "tsx --env-file=.env.local scripts/fix-indexes.ts",
+    "db:make-admin": "tsx --env-file=.env.local scripts/make-admin.ts"
   },
   "dependencies": {
     "lucide-react": "^0.575.0",
+    "mongoose": "^9.2.3",
     "motion": "^12.34.2",
     "next": "16.1.6",
     "next-auth": "5.0.0-beta.30",
@@ -21,9 +26,11 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv-cli": "^11.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

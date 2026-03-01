@@ -13,6 +13,7 @@ interface LC {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   login: boolean;
+  loading: boolean;
 }
 
 const LoginContext = createContext<undefined | LC>(undefined);
@@ -23,6 +24,7 @@ export const LoginProvider = ({ children }: { children: ReactNode }) => {
   // derive login state from next-auth session
   const { status } = useSession();
   const login = status === "authenticated";
+  const loading = status === "loading";
 
   // lock body scroll when modal open
   useEffect(() => {
@@ -30,7 +32,7 @@ export const LoginProvider = ({ children }: { children: ReactNode }) => {
   }, [isOpen]);
 
   return (
-    <LoginContext.Provider value={{ isOpen, setIsOpen, login }}>
+    <LoginContext.Provider value={{ isOpen, setIsOpen, login, loading }}>
       {children}
     </LoginContext.Provider>
   );

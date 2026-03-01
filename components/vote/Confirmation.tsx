@@ -1,4 +1,4 @@
-import { candidateT } from "@/app/vote/page";
+import { ICandidate } from "@/models/Candidate";
 import React from "react";
 import CandidateCardAlt from "./CandidateCardAlt";
 import { CircleAlert } from "lucide-react";
@@ -6,7 +6,7 @@ import { CircleAlert } from "lucide-react";
 const Confirmation = ({
   selectedCandidates,
 }: {
-  selectedCandidates: candidateT[];
+  selectedCandidates: ICandidate[];
 }) => {
   return (
     <div>
