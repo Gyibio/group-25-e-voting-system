@@ -29,6 +29,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (token.sub) {
         session.user.id = token.sub;
       }
+      // default role is "student"; promote to "admin" via the User DB record
+      session.user.role = (token.role as "student" | "admin") ?? "student";
       return session;
     },
   },
