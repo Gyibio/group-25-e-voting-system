@@ -38,9 +38,11 @@ const Hero = () => {
                   Cast Your Vote
                 </button>
               )}
-              <button className="btn-primary backdrop-blur-xs bg-transparent hover:bg-primary hover:border-primary transition-colors duration-300 border border-white">
-                View Results
-              </button>
+              <Link href={"/results"}>
+                <button className="btn-primary backdrop-blur-xs bg-transparent hover:bg-primary hover:border-primary transition-colors duration-300 border border-white">
+                  View Results
+                </button>
+              </Link>
             </div>
           </div>
         </div>
