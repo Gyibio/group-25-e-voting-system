@@ -36,7 +36,10 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const votedPositions = new Set(existingVotes.map((v) => v.position));
 
   // Only redirect if the user has voted for ALL positions
-  if (allPositions.length > 0 && allPositions.every((p) => votedPositions.has(p))) {
+  if (
+    allPositions.length > 0 &&
+    allPositions.every((p) => votedPositions.has(p))
+  ) {
     redirect("/dashboard?alreadyVoted=true");
   }
 
