@@ -9,6 +9,9 @@ import React from "react";
 
 export type { CandidateWithVotes };
 
+// Disable caching so results always reflect the latest votes
+export const dynamic = "force-dynamic";
+
 type ElectionResult = {
   _id: string;
   title: string;
