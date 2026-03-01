@@ -5,8 +5,6 @@ import Candidate, { ICandidate } from "@/models/Candidate";
 import Vote from "@/models/Vote";
 import { redirect } from "next/navigation";
 
-export type candidateT = ICandidate;
-
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
 
