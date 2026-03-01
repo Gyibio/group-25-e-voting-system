@@ -8,6 +8,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       clientSecret: process.env.AUTH_MICROSOFT_ENTRA_ID_SECRET!,
       // "common" allows both personal and work/school accounts
       issuer: "https://login.microsoftonline.com/common/v2.0",
+      authorization: {
+        params: {
+          // Always show the Microsoft account picker so users can switch accounts
+          prompt: "select_account",
+        },
+      },
     }),
   ],
   callbacks: {

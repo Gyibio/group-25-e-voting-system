@@ -4,9 +4,12 @@ import { NextResponse } from "next/server";
 export default auth(function proxy(req) {
   const { nextUrl, auth: session } = req;
 
-  // Allow the homepage and all auth callbacks through unconditionally
+  // Allow the homepage, error page, results, and all auth callbacks through unconditionally
   const isPublic =
-    nextUrl.pathname === "/" || nextUrl.pathname.startsWith("/api/auth");
+    nextUrl.pathname === "/" ||
+    nextUrl.pathname === "/error" ||
+    nextUrl.pathname === "/results" ||
+    nextUrl.pathname.startsWith("/api/auth");
 
   if (!isPublic && !session) {
     // Redirect unauthenticated users back to the homepage

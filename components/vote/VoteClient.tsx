@@ -10,9 +10,11 @@ import { useState } from "react";
 const VoteClient = ({
   candidates,
   electionId,
+  previousVotes = {},
 }: {
   candidates: ICandidate[];
   electionId: string;
+  previousVotes?: Record<string, string>;
 }) => {
   const positions = Array.from(new Set(candidates.map((c) => c.position)));
 
@@ -25,8 +27,18 @@ const VoteClient = ({
     (c) => c.position === currentStep.position,
   );
 
+  // Pre-select candidates the user previously voted for
   const [selectedCandidates, setSelectedCandidates] = useState<ICandidate[]>(
-    [],
+    () => {
+      const preSelected: ICandidate[] = [];
+      for (const [position, candidateId] of Object.entries(previousVotes)) {
+        const match = candidates.find(
+          (c) => c.position === position && String(c._id) === candidateId,
+        );
+        if (match) preSelected.push(match);
+      }
+      return preSelected;
+    },
   );
 
   const [confirm, setConfirm] = useState(false);

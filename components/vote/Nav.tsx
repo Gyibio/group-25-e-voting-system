@@ -42,9 +42,10 @@ const Nav = ({
         ),
       );
 
-      const failed = results.find((r) => !r.ok);
-      if (failed) {
-        const body = await failed.json();
+      // 409 = duplicate vote (already recorded) — that's fine, treat as success
+      const realFailure = results.find((r) => !r.ok && r.status !== 409);
+      if (realFailure) {
+        const body = await realFailure.json();
         setError(body.error ?? "Failed to submit vote. Please try again.");
         return;
       }

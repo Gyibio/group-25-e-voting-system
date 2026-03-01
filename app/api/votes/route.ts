@@ -23,7 +23,12 @@ export async function POST(req: NextRequest) {
   data.voter = session.user.id;
 
   try {
-    const doc = await Vote.create(data);
+    // Upsert: if the user already voted for this position, overwrite the candidate
+    const doc = await Vote.findOneAndUpdate(
+      { voter: data.voter, election: data.election, position: data.position },
+      { candidate: data.candidate },
+      { upsert: true, new: true, setDefaultsOnInsert: true },
+    );
     return NextResponse.json(doc, { status: 201 });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : String(err);
