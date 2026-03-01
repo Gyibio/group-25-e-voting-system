@@ -1,7 +1,8 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
 
 export interface ICandidate extends Document {
   name: string;
+  position: string;
   faculty: string;
   motto: string;
   photo?: string;
@@ -11,6 +12,7 @@ export interface ICandidate extends Document {
 const CandidateSchema = new Schema<ICandidate>(
   {
     name: { type: String, required: true },
+    position: { type: String, required: true },
     faculty: { type: String, required: true },
     motto: { type: String, required: true },
     photo: {

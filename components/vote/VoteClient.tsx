@@ -1,22 +1,21 @@
 "use client";
-import candidates from "@/candidates";
 import Completed from "@/components/vote/Completed";
 import Confirmation from "@/components/vote/Confirmation";
 import Nav from "@/components/vote/Nav";
 import VoteHeader from "@/components/vote/VoteHeader";
 import VotingSection from "@/components/vote/VotingSection";
-import { useEffect, useState } from "react";
+import { ICandidate } from "@/models/Candidate";
+import { useState } from "react";
 
-export type candidateT = {
-  name: string;
-  position: string;
-  faculty: string;
-  motto: string;
-  votes: number;
-};
-
-const Page = () => {
+const VoteClient = ({
+  candidates,
+  electionId,
+}: {
+  candidates: ICandidate[];
+  electionId: string;
+}) => {
   const positions = Array.from(new Set(candidates.map((c) => c.position)));
+
   const [currentStep, setCurrentStep] = useState<{
     position: string;
     index: number;
@@ -26,19 +25,16 @@ const Page = () => {
     (c) => c.position === currentStep.position,
   );
 
-  const [selectedCandidates, setSelectedCandidates] = useState<candidateT[]>(
+  const [selectedCandidates, setSelectedCandidates] = useState<ICandidate[]>(
     [],
   );
 
   const [confirm, setConfirm] = useState(false);
   const [complete, setComplete] = useState(false);
 
-  useEffect(() => console.log(selectedCandidates), [selectedCandidates]);
-
   return (
     <div className="flex h-screen flex-col items-center">
       <VoteHeader totalPositions={positions.length} currentStep={currentStep} />
-      {/* use candidates array here for rendering or testing */}
       {complete ? (
         <Completed />
       ) : (
@@ -60,6 +56,8 @@ const Page = () => {
             positions={positions}
             currentStep={currentStep}
             setCurrentStep={setCurrentStep}
+            electionId={electionId}
+            selectedCandidates={selectedCandidates}
           />
         </div>
       )}
@@ -67,4 +65,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default VoteClient;

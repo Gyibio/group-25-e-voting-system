@@ -4,9 +4,17 @@ import Candidate from "@/models/Candidate";
 import mongoose from "mongoose";
 import { requireSession, requireAdmin } from "@/lib/auth";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   await dbConnect();
-  const list = await Candidate.find();
+  const url = new URL(req.url);
+  const electionId = url.searchParams.get("election");
+
+  const filter: Record<string, unknown> = {};
+  if (electionId) {
+    filter.election = electionId;
+  }
+
+  const list = await Candidate.find(filter);
   return NextResponse.json(list);
 }
 

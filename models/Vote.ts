@@ -1,10 +1,10 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
 
 export interface IVote extends Document {
   voter: mongoose.Types.ObjectId;
   candidate: mongoose.Types.ObjectId;
   election: mongoose.Types.ObjectId;
-  createdAt: Date;
+  position: string;
 }
 
 const VoteSchema = new Schema<IVote>(
@@ -20,12 +20,13 @@ const VoteSchema = new Schema<IVote>(
       ref: "Election",
       required: true,
     },
-    createdAt: { type: Date, required: true },
+    position: { type: String, required: true },
   },
   { timestamps: true },
 );
 
-VoteSchema.index({ voter: 1, election: 1 }, { unique: true });
+// one vote per user per position per election
+VoteSchema.index({ voter: 1, election: 1, position: 1 }, { unique: true });
 
 export default mongoose.models.Vote ||
   mongoose.model<IVote>("Vote", VoteSchema);

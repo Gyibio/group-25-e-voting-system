@@ -1,4 +1,4 @@
-import { candidateT } from "./app/vote/page";
+import { candidateT } from "./app/vote/[id]/page";
 
 const candidates: candidateT[] = [
   // president candidates

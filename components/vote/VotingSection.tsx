@@ -1,5 +1,5 @@
+import { ICandidate } from "@/models/Candidate";
 import CandidateCard from "./CandidateCard";
-import { candidateT } from "@/app/vote/page";
 
 const VotingSection = ({
   currentStep,
@@ -8,13 +8,13 @@ const VotingSection = ({
   setSelectedCandidates,
 }: {
   currentStep: { position: string; index: number };
-  curCandidates: candidateT[];
-  selectedCandidates: candidateT[];
+  curCandidates: ICandidate[];
+  selectedCandidates: ICandidate[];
   setSelectedCandidates: (
-    _: candidateT[] | ((_: candidateT[]) => candidateT[]),
+    _: ICandidate[] | ((_: ICandidate[]) => ICandidate[]),
   ) => void;
 }) => {
-  const handlePick = (candidate: candidateT) => {
+  const handlePick = (candidate: ICandidate) => {
     setSelectedCandidates((prev) => {
       const pos = currentStep.position;
       const existing = prev.find((p) => p.position === pos);

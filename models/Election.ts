@@ -1,7 +1,8 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
 
 export interface IElection extends Document {
   title: string;
+  description?: string;
   startDate: Date;
   endDate: Date;
   status: "upcoming" | "active" | "closed";
@@ -10,6 +11,7 @@ export interface IElection extends Document {
 const ElectionSchema = new Schema<IElection>(
   {
     title: { type: String, required: true },
+    description: { type: String },
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
     status: {

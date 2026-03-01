@@ -1,5 +1,6 @@
 import { ChevronLeft } from "lucide-react";
 import { motion } from "motion/react";
+import Link from "next/link";
 
 const VoteHeader = ({
   totalPositions,
@@ -12,10 +13,12 @@ const VoteHeader = ({
     <div className="w-full h-fit">
       <div className="w-full flex items-center justify-between p-4">
         <div>
-          <button className="flex items-center">
-            <ChevronLeft />
-            Back
-          </button>
+          <Link href={"/dashboard"}>
+            <button className="flex items-center">
+              <ChevronLeft />
+              Back
+            </button>
+          </Link>
         </div>
         <h1 className="font-bold">SRC Elections 2025/2026</h1>
         <div>
